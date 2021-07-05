@@ -1,0 +1,173 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <!--        <item name="android:windowDrawsSystemBarBackgrounds">true</item>-->
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:windowTranslucentStatus">true</item>
+    </style>
+
+    <style name="AppThemeOutlet" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="DmsButton">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:minHeight">40dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:elevation">0dp</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textSize" tools:ignore="SpUsage">16dp</item>
+        <item name="android:background">@drawable/bg_button_primary_rounded_corner</item>
+
+    </style>
+
+
+    <style name="CustomDialog" parent="@android:style/Theme.Material.Light.Dialog.NoActionBar.MinWidth">
+        <item name="android:windowMinWidthMajor">65%</item>
+        <item name="android:windowMinWidthMinor">75%</item>
+        <item name="android:colorAccent">@color/colorAccent</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <!--<item name="android:windowAnimationStyle">@style/PauseDialogAnimation</item>-->
+    </style>
+
+    <style name="PauseDialogAnimation">
+        <item name="android:windowEnterAnimation">@anim/activity_slide_up</item>
+        <item name="android:windowExitAnimation">@anim/activity_slide_down</item>
+    </style>
+
+    <declare-styleable name="DialogToolbarView">
+        <attr name="textSize" format="float" />
+        <attr name="textTitle" format="string" />
+
+    </declare-styleable>
+
+
+    <style name="ImageOrderProductTab">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_gravity">center</item>
+    </style>
+
+    <style name="DialogSlideAnimation">
+        <item name="android:windowEnterAnimation">@anim/dialog_slide_up</item>
+        <item name="android:windowExitAnimation">@anim/dialog_slide_down</item>
+    </style>
+
+    <declare-styleable name="DmsPassCodeView">
+        <attr name="digits" format="integer" />
+        <attr name="filled_drawable" format="reference" />
+        <attr name="empty_drawable" format="reference" />
+        <attr name="digit_size" format="dimension" />
+        <attr name="key_text_size" format="dimension" />
+        <attr name="edit_text_size" format="dimension" />
+        <attr name="divider_visible" format="boolean" />
+        <attr name="digit_spacing" format="dimension" />
+        <attr name="digit_vertical_padding" format="dimension" />
+    </declare-styleable>
+
+
+    <style name="CardOutletInfoStyle">
+        <item name="cardCornerRadius">16dp</item>
+        <item name="contentPadding">16dp</item>
+        <item name="cardElevation">0dp</item>
+    </style>
+
+    <declare-styleable name="UnderLineTextView">
+        <attr name="underlineHeight" format="dimension" />
+        <attr name="underlineSpace" format="dimension" />
+        <attr name="underlineColor" format="color" />
+    </declare-styleable>
+
+    <style name="TextInputLayoutHintStyleEditProfile">
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textSize">18dp</item>
+        <item name="android:layout_marginBottom">24dp</item>
+        <item name="android:paddingBottom">24dp</item>
+    </style>
+
+
+
+    <declare-styleable name="DmsTextSpinnerView">
+        <attr name="textSpinnerTitle" format="string" />
+        <attr name="isShowLine" format="boolean" />
+        <attr name="textSpinnerApostroseMode" format="boolean" />
+    </declare-styleable>
+
+    <declare-styleable name="DmsTextView">
+        <attr name="dmsTextTranslate" format="boolean" />
+
+    </declare-styleable>
+
+    <declare-styleable name="DmsTextEditTextView">
+        <attr name="te_isShowLine" format="boolean" />
+        <attr name="textEditTextTitle" format="string" />
+        <attr name="textEditTextInputType" format="integer" />
+    </declare-styleable>
+
+    <style name="DMSFontStyle">
+    </style>
+
+
+    <style name="LayoutFilterStyle">
+<!--        <item name="android:background">@drawable/bg_filter_box_round</item>-->
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:clickable">true</item>
+        <item name="android:focusable">true</item>
+        <item name="android:minWidth">100dp</item>
+        <item name="android:minHeight">32dp</item>
+        <item name="android:padding">8dp</item>
+    </style>
+
+    <style name="DialogAnimationScaleInOut">
+        <item name="android:windowEnterAnimation">@anim/dialog_scale_in</item>
+        <item name="android:windowExitAnimation">@anim/dialog_scale_out</item>
+    </style>
+
+    <style name="DialogAnimationSlidInOut">
+        <item name="android:windowEnterAnimation">@anim/dialog_slide_up</item>
+        <item name="android:windowExitAnimation">@anim/dialog_slide_down</item>
+    </style>
+
+    <style name="TabTextAppearance">
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textSize" tools:ignore="SpUsage">14dp</item>
+
+    </style>
+
+    <declare-styleable name="MoreItemView">
+        <attr name="moreTitle" format="string" />
+        <attr name="moreIcon" format="integer" />
+    </declare-styleable>
+
+    <declare-styleable name="HeaderApprovalView">
+        <attr name="headerTitle" format="string" />
+        <attr name="headerIcon" format="integer" />
+        <attr name="headerColor" format="integer" />
+    </declare-styleable>
+
+
+    <style name="AppBottomSheetDialogTheme" parent="Theme.Design.Light.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/AppModalStyle</item>
+    </style>
+
+    <style name="AppModalStyle" parent="Widget.Design.BottomSheet.Modal">
+        <item name="android:windowIsFloating">true</item>
+<!--        <item name="android:background">@drawable/bg_bottom_chooser_round_top</item>-->
+    </style>
+
+    <style name="TextAppearance.CustomDay" parent="android:TextAppearance.DeviceDefault.Small">
+        <item name="android:textSize">12sp</item>
+<!--        <item name="android:textColor">@color/custom_day_color</item>-->
+    </style>
+
+</resources>

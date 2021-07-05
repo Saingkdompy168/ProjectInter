@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <fragment
+        android:id="@+id/map"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:context=".ui.activities.PickLatLngOnMapActivity" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/white"
+        android:padding="16dp"
+        android:alpha="0.85"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/tv_address"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Address: - -"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            app:layout_constraintStart_toStartOf="parent"
+            android:id="@+id/tv_lat_label"
+            android:layout_marginTop="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="latitude"
+            app:layout_constraintTop_toBottomOf="@+id/tv_address" />
+
+        <TextView
+            android:id="@+id/tv_lat_value"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text=": --"
+            android:textStyle="bold"
+            android:textColor="@color/colorPrimary"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_lat_label"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/tv_lat_label"
+            app:layout_constraintTop_toTopOf="@+id/tv_lat_label" />
+
+
+        <TextView
+            app:layout_constraintStart_toStartOf="parent"
+            android:id="@+id/tv_lng_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="longitude"
+            android:layout_marginTop="10dp"
+            app:layout_constraintTop_toBottomOf="@+id/tv_lat_label"
+            />
+
+        <TextView
+            android:id="@+id/tv_lng_value"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text=": - -"
+            android:textStyle="bold"
+            android:textColor="@color/colorPrimary"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_lng_label"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/tv_lng_label"
+            app:layout_constraintTop_toTopOf="@+id/tv_lng_label" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <ImageView
+        android:layout_width="54dp"
+        android:layout_height="54dp"
+        android:src="@drawable/ic_default_pin"
+        android:layout_marginTop="73dp"
+        app:layout_constraintBottom_toBottomOf="@id/map"
+        app:layout_constraintEnd_toEndOf="@id/map"
+        app:layout_constraintStart_toStartOf="@+id/map"
+        app:layout_constraintTop_toTopOf="@+id/map" />
+
+    <Button
+        android:id="@+id/btn_done"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:text="Done"
+        android:background="@color/colorPrimary"
+        style="@style/DmsButton"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,236 @@
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'kotlin-android-extensions'
+    id 'kotlin-kapt'
+    id 'realm-android'
+    id 'com.google.android.libraries.mapsplatform.secrets-gradle-plugin'
+}
+
+
+android {
+
+    lintOptions {
+        checkReleaseBuilds false
+        // Or, if you prefer, you can continue to check for errors in release builds,
+        // but continue the build even when errors are found:
+        abortOnError false
+    }
+    android {
+        dataBinding {
+            enabled = true
+        }
+    }
+
+    signingConfigs {
+        debug {
+            storeFile file('inter_debug_key.jks')
+            storePassword '123456'
+            keyAlias = 'debug'
+            keyPassword '123456'
+        }
+//    release {
+//        storeFile file('inter_release_key.jks')
+//        storePassword 'inter2020'
+//        keyPassword 'inter2020'
+//        keyAlias = 'release'
+//    }
+//    debugDev {
+//        keyAlias = 'debugDev'
+//        storeFile file('inter_debug_dev.jks')
+//        storePassword 'inter2020'
+//        keyPassword 'inter2020'
+//    }
+    }
+
+
+    compileSdkVersion 30
+    buildToolsVersion "30.0.3"
+
+    defaultConfig {
+        applicationId "com.example.projectinter"
+        minSdkVersion 21
+        targetSdkVersion 30
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        multiDexEnabled true
+        resConfigs "en", "km", "fr", "es", "zh", "de", "ja", "ru", "ko", "pt", "in"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+//            signingConfig signingConfigs.release
+        }
+        debug {
+            debuggable = true
+            signingConfig signingConfigs.debug
+            minifyEnabled false
+
+        }
+    }
+
+    flavorDimensions 'version'
+    productFlavors {
+        def addConstantTo = { target, constantName, constantValue ->
+            target.manifestPlaceholders += [(constantName): constantValue]
+            target.buildConfigField "String", "${constantName}", "\"${constantValue}\""
+        }
+
+        dev {
+            dimension = 'version'
+            applicationId = 'com.example.projectinter'
+            applicationIdSuffix = '.dev'
+
+
+            //Staging
+            buildConfigField 'String', 'BASE_URL', '"https://dms-api-dev.pathmazing.com/"'
+            buildConfigField 'String', 'BASE_URL_IMAGE', '"https://dms-api-dev.cmg.pathmazing.com/"'
+            buildConfigField 'String', 'CLIENT_ID', '"123456789987654321"'
+            buildConfigField 'String', 'CLIENT_SECRET', '"987654321123456789"'
+
+            resValue "string", 'app_name', '"InterDev"'
+            addConstantTo(owner, "PROVIDER", "com.example.projectinter.dev.fileprovider")
+            versionCode = 3
+            versionName = '1'
+            versionNameSuffix = '.2'
+        }
+
+        InterStaging {
+            dimension 'version'
+            applicationId 'com.example.projectinter'
+            applicationIdSuffix '.staging'
+
+
+            //Staging
+            buildConfigField 'String', 'BASE_URL', '"https://dms-staging-api.pathmazing.com"'
+            buildConfigField 'String', 'BASE_URL_IMAGE', '"https://dms-staging-api.pathmazing.com"'
+            buildConfigField 'String', 'CLIENT_ID', '"987654321"'
+            buildConfigField 'String', 'CLIENT_SECRET', '"123456789"'
+
+            resValue "string", 'app_name', '"InterDev Staging"'
+            addConstantTo(owner, "PROVIDER", "com.chipmong.dms.staging.fileprovider")
+
+            versionCode 10
+            versionName '1'
+            versionNameSuffix '.1.28'
+        }
+
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+}
+
+realm {
+    kotlinExtensionsEnabled = true
+}
+
+dependencies {
+
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    implementation 'androidx.core:core-ktx:1.5.0'
+    implementation 'androidx.appcompat:appcompat:1.3.0'
+    implementation 'com.google.android.material:material:1.3.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'com.google.android.gms:play-services-maps:17.0.1'
+    testImplementation 'junit:junit:4.+'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+
+    // retrofit, gson
+    implementation 'com.google.code.gson:gson:2.8.5'
+    implementation 'com.squareup.retrofit2:retrofit:2.7.1'
+    implementation 'com.squareup.retrofit2:converter-gson:2.3.0'
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.4.1'
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.4.1'
+    //RxJava
+    implementation 'io.reactivex.rxjava2:rxjava:2.1.13'
+    implementation 'io.reactivex.rxjava2:rxandroid:2.0.2'
+    implementation 'com.jakewharton.retrofit:retrofit2-rxjava2-adapter:1.0.0'
+
+    implementation 'com.github.nkzawa:socket.io-client:0.6.0'
+    implementation 'androidx.recyclerview:recyclerview:1.1.0'
+
+//    implementation 'com.google.firebase:firebase-analytics:17.2.2'
+    implementation 'com.google.firebase:firebase-messaging:20.1.0'
+    implementation 'com.google.firebase:firebase-core:17.2.2'
+    implementation 'com.google.firebase:firebase-database:19.2.1'
+
+//    //Google map
+//    implementation "com.google.android.gms:play-services-maps:$supportLibGmsVersion"
+//    implementation "com.google.android.gms:play-services-location:$supportLibGmsVersion"
+//    implementation 'com.google.maps.android:android-maps-utils:0.5'
+
+    //Circle image view
+    implementation 'de.hdodenhof:circleimageview:2.0.0'
+    //Rounded image view
+    implementation 'com.makeramen:roundedimageview:2.3.0'
+
+    implementation 'com.google.android.material:material:1.1.0'
+
+    //Glide loading image
+    implementation 'com.github.bumptech.glide:glide:4.8.0'
+
+
+    implementation 'in.arjsna:passcodeview:1.2.1'
+
+    implementation 'com.timqi.sectorprogressview:library:2.0.1'
+    implementation 'com.github.filippudak.progresspieview:library:1.0.+'
+    implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
+    implementation 'com.github.lecho:hellocharts-android:v1.5.8'
+
+    implementation 'com.github.chrisbanes:PhotoView:2.0.0'
+    implementation 'com.googlecode.libphonenumber:libphonenumber:7.7.5'
+    implementation 'com.prolificinteractive:material-calendarview:1.4.2'
+
+//    QR code generator
+    implementation 'me.dm7.barcodescanner:zxing:1.9.8'
+    implementation 'com.budiyev.android:code-scanner:2.1.0'
+
+    implementation "androidx.biometric:biometric:1.0.1"
+//  pager
+    implementation 'com.github.demoNo:AutoScrollViewPager:v1.0.2'
+//  youtube player
+    implementation 'com.pierfrancescosoffritti.androidyoutubeplayer:core:10.0.5'
+
+//    stickey header
+    implementation 'com.timehop.stickyheadersrecyclerview:library:0.4.3@aar'
+
+    implementation "androidx.lifecycle:lifecycle-service:2.2.0"
+
+//    implementation 'com.github.lyrebirdstudio:Croppy:0.2'
+//    implementation 'com.github.yalantis:ucrop:2.2.6'
+    api 'com.theartofdev.edmodo:android-image-cropper:2.8.+'
+    implementation 'com.github.IntruderShanky:Sectioned-RecyclerView:2.1.1'
+
+    // Coroutines
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.0'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.4.3'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-play-services:1.4.1'
+
+// Coroutine Lifecycle Scopes
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.1"
+    implementation "androidx.lifecycle:lifecycle-runtime-ktx:2.3.1"
+// Preferences DataStore
+    implementation "androidx.datastore:datastore-preferences:1.0.0-beta02"
+
+    implementation("androidx.datastore:datastore-core:1.0.0-beta02")
+
+    implementation 'com.tbuonomo:dotsindicator:4.2'
+//  google map
+    implementation 'com.google.android.gms:play-services-maps:17.0.1'
+    implementation "com.google.android.gms:play-services-location:$supportLibGmsVersion"
+    implementation 'com.google.maps.android:android-maps-utils:0.5'
+
+}
+
+

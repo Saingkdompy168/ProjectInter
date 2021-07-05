@@ -1,0 +1,8 @@
+<resources>
+    <!--    <string name="app_name">ProjectInter</string>-->
+    <string name="some_thing_went_wrong">ssdgsdgsdgsdg</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_maps">Map</string>
+    <string name="pick_up_map">Pick Up Map</string>
+</resources>

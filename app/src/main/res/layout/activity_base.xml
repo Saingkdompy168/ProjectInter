@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/base_activity_root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <FrameLayout
+            android:id="@+id/layout_base_container"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/baseToolBar" />
+
+        <com.example.projectinter.customview.BaseToolbar
+            android:id="@+id/baseToolBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <ImageView
+            android:id="@+id/imageFooter"
+            android:layout_width="match_parent"
+            android:layout_height="24dp"
+            android:scaleType="fitXY"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintDimensionRatio="1:0.035" />
+
+<!--        <com.chipmong.dms.customview.SearchV2View-->
+<!--            android:id="@+id/activity_search_view"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:visibility="gone" />-->
+
+<!--        <com.chipmong.dms.customview.DmsErrorView-->
+<!--            android:id="@+id/errorView"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="0dp"-->
+<!--            android:visibility="gone"-->
+<!--            app:layout_constraintBottom_toTopOf="@id/imageFooter"-->
+<!--            app:layout_constraintTop_toTopOf="parent" />-->
+
+<!--        <com.chipmong.dms.customview.ProgressLoadingView-->
+<!--            android:id="@+id/progressLoadingView"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="0dp"-->
+<!--            android:visibility="gone"-->
+<!--            app:layout_constraintBottom_toTopOf="@id/imageFooter"-->
+<!--            app:layout_constraintTop_toTopOf="parent" />-->
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
